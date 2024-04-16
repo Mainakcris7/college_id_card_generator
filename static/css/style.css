@@ -67,13 +67,14 @@ p#uid, p#name{
     font-size: 0.9rem;
     font-weight: bold;
 }
-img#qrcode{
-    width: 200px;
-    height: 50px;
+svg#barcode{
+    width: 250px;
+    height: 35px;
     display: block;
     margin: 0 auto;
 }
 p#name{
+    margin-top: 3px;
     color: var(--primary-blue);
 }
 div#other_details, p#roll{

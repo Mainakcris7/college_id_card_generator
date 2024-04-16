@@ -6,6 +6,7 @@
     <title>College ID</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.6/JsBarcode.all.min.js" integrity="sha512-k2wo/BkbloaRU7gc/RkCekHr4IOVe10kYxJ/Q8dRPl7u3YshAQmg3WfZtIcseEk+nGBdK03fHBeLgXTxRmWCLQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <div class="container">
@@ -24,7 +25,7 @@
                 <img src="<%= img_url %>" alt="">
             </div>
             <p id="uid"><%= data.uid%></p>
-            <img src="qrcode.png" alt="" id="qrcode">
+            <svg id="barcode"></svg>
             <p id="name"><%= name%></p>
             <div id="details">
                 <p id="roll">ROLL NO.: <%= roll%></p>
