@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload details</title>
+</head>
+<body>
+    <form action="/image_download" method="POST" enctype="multipart/form-data">
+        <div class="uid">
+            <label for="uid">UID</label>
+            <input type="text" name="uid" id="uid">
+        </div>
+        <div class="name">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name">
+        </div>
+        <div class="roll_no">
+            <label for="roll">Roll No.</label>
+            <input type="text" name="roll" id="roll">
+        </div>
+        <div class="department">
+            <label for="dept">Department</label>
+            <select name="dept" id="dept">
+                <option value="CSE-DS">CSE-DS</option>
+                <option value="CSE">CSE</option>
+                <option value="CSE-AIML">CSE-AIML</option>
+            </select>
+        </div>
+        <div class="dob">
+            <label for="dob">DOB</label>
+            <input type="date" name="dob" id="dob">
+        </div>
+        <div class="valid">
+            <label for="valid_upto">Valid Upto</label>
+            <input type="date" name="valid_upto" id="valid_upto">
+        </div>
+        <div class="blood_grp">
+            <label for="blood_grp">Blood Group</label>
+            <input type="text" name="blood_grp" id="blood_grp">
+        </div>
+        <div class="issue">
+            <label for="issue_date">Issue Date</label>
+            <input type="date" name="issue_date" id="issue_date">
+        </div>
+        <div id="stud_img">
+            <label for="input_img">Upload image</label>
+            <input type="file" name="input_img" id="input_img">
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</body>
+</html>

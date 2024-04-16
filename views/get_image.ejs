@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College ID</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="outer">
+            <div id="dom">
+            <div id="logo_collegename">
+                <div id="logo">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm29oN9qGi14THfIIoukK6SgcOx8el_448Wd5juzuRwg&s" alt="student">
+                </div>
+                <div id="collegename">
+                    <h2>MCKV Institute of Engineering</h2>
+                    <p id="college_details">A Co-Ed PG Degree Engineering College</p>
+                </div>
+            </div>
+            <div id="image">
+                <img src="<%= img_url %>" alt="">
+            </div>
+            <p id="uid"><%= data.uid%></p>
+            <img src="qrcode.png" alt="" id="qrcode">
+            <p id="name"><%= name%></p>
+            <div id="details">
+                <p id="roll">ROLL NO.: <%= roll%></p>
+                <div id="other_details">
+                    <div id="key">
+                        <p>Department.</p>
+                        <p>DOB.</p>
+                        <p>Valid Upto</p>
+                        <p>Blood Group.</p>
+                        <p>Issue Date.</p>
+                    </div>
+                    <div id="values">
+                        <p>:&nbsp; &nbsp; <%= data.dept%></p>
+                        <p>:&nbsp; &nbsp; <%= data.dob %></p>
+                        <p>:&nbsp; &nbsp; <%= data.valid_upto %></p>
+                        <p>:&nbsp; &nbsp; <span style="color:red"><%= data.blood_grp %></span></p>
+                        <p>:&nbsp; &nbsp; <%= data.issue_date %></p>
+                    </div>
+                </div>
+            </div>
+            <div id="principal-sign">
+                <img src="principal_sign.png" alt="">
+            </div>
+            <p id="principal">Principal</p>
+        </div>
+        <button id="generate">Generate</button>
+        </div>
+    </div>
+    <script src="/js/app.js"></script>
+</body>
+</html>

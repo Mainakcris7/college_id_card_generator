@@ -1,0 +1,126 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+:root{
+    --primary-blue: rgb(2, 2, 152);
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    font-family: sans-serif;
+}
+div.container{
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+div#dom{
+    width: 300px;
+    height: 1/2.7;
+    /* padding: 1rem; */
+    background-color: white;
+    outline: 1px solid red;
+    overflow: hidden;
+}
+div#logo_collegename{
+    padding: 0.65rem 0.8rem 0.25rem 0.8rem;
+    display: flex;
+    border-bottom: 3px solid var(--primary-blue);
+}
+div#logo_collegename h2, p{
+    text-align: center;
+}
+div#logo_collegename h2{
+    color: var(--primary-blue);
+    font-size: 1.3rem;
+}
+div#logo_collegename p{
+    margin-top: 5px;
+    font-size: 0.65rem;
+    color: red;
+    font-weight: 700;
+}
+div#logo{
+    width: 95px;
+}
+div#logo img{
+    width: 100%;
+}
+div#image{
+    width: 100%;
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div#image img{
+    height: 100px;
+}
+p#uid, p#name{
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+img#qrcode{
+    width: 200px;
+    height: 50px;
+    display: block;
+    margin: 0 auto;
+}
+p#name{
+    color: var(--primary-blue);
+}
+div#other_details, p#roll{
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-align: left;
+}
+p#roll{
+    margin-top: 0.5rem;
+    padding-left: 2rem;
+}
+div#other_details{
+    display: flex;
+    width: 100%;
+}
+div#other_details div{
+    /* outline: 1px solid red; */
+    width: 40%;
+}
+div#other_details div#key{
+    margin-left: 2rem;
+}
+div#other_details div p{
+    text-align: left;
+}
+div#principal-sign{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: right;
+}
+div#principal-sign img{
+    height: 50px;
+    margin-right: 20px;
+}
+p#principal{
+    text-align: right;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-right: 50px;
+    margin-bottom: 3rem;
+}
+button#generate{
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(0, 81, 255);
+    color: white;
+    font-size: 0.8rem;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+}
