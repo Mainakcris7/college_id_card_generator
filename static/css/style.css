@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Mukta:wght@200;300;400;500;600;700;800&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -9,13 +10,12 @@ body{
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     background-color: rgb(39, 39, 39);
     font-family: sans-serif;
 }
-div.container{
-    outline: 1px solid black;
+div#container, div#container_2{
     width: 300px;
     display: flex;
     flex-direction: column;
@@ -27,7 +27,7 @@ div.container{
     background-color: aliceblue;
     position: relative;
 }
-div.container div.btns{
+div#container div.btns, div#container_2 div.btns{
     display: flex;
     width: 100%;
 }
@@ -40,24 +40,25 @@ div.btns button.btn{
     width: 50%;
     background-color: aliceblue;
     border: none;
+    font-family: "Poppins", sans-serif;
 }
 div.btns button.active{
-    border-bottom: 2px solid blue;
+    border-bottom: 2px solid blue !important;
     font-weight: bold;
 }
-div.container div#id_download{
+div#container div#id_download, div#container_2 div#id_download_2{
     position: absolute;
     width: 300px;
-    top: 50px;
+    top: 54px;
     transform: translateX(110%);
     transition: all 0.15s linear;
     opacity: 0;
     /* left: 100%; */
 }
-div#id_download a{
+div#id_download a, div#id_download_2 a{
     text-decoration: none;
 }
-div#card_preview{
+div#card_preview, div#card_preview_2{
     transition: all 0.15s linear;
 }
 div#dom{
@@ -82,7 +83,7 @@ div#logo_collegename h2{
 div#logo_collegename p{
     margin-top: 5px;
     font-size: 0.65rem;
-    color: red;
+    color: rgb(208, 2, 2);
     font-weight: 700;
 }
 div#logo{
@@ -99,7 +100,7 @@ div#image{
     align-items: center;
 }
 div#image img{
-    height: 100px;
+    height: 120px;
 }
 p#uid, p#name{
     text-align: center;
@@ -155,7 +156,7 @@ p#principal{
     margin-right: 50px;
     margin-bottom: 3rem;
 }
-button#generate, div#id_download a{
+button#generate, button#generate_2, div#id_download a, div#id_download_2 a{
     border: none;
     border-radius: 5px;
     background-color: rgb(0, 81, 255);
@@ -164,14 +165,80 @@ button#generate, div#id_download a{
     padding: 0.5rem 0.8rem;
     cursor: pointer;
     text-transform: uppercase;
+    transition: all 0.05s linear;
+    font-family: "Poppins", sans-serif;
 }
-div#generate_btn{
+button#generate:hover, button#generate_2:hover, div#id_download a:hover, div#id_download_2 a:hover{
+    border-radius: 20px;
+}
+div#generate_btn, div#generate_btn_2{
     display: flex;
     flex-direction: row-reverse;
     margin-top: 10px;
 }
-div#id_download a{
+div#id_download a, div#id_download_2 a{
     display: block;
     width: max-content;
     margin: 4px auto 0 auto;
+}
+
+/* Back side */
+
+div.back_side{
+    /* outline: 1px solid black; */
+    width: 300px;
+    height: 510px;
+    /* padding: 1rem; */
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+div.back_side h2{
+    text-transform: uppercase;
+    color: rgb(208, 2, 2);
+    text-align: center;
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    top: 1.5rem;
+}
+div.back_side p, div.back_side li{
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin: 0.5rem;
+}
+div.back_side li{
+    text-align: left;
+    margin-left: 2rem;
+}
+div#student_address{
+    margin-top: 0.6rem;
+}
+div#student_address p:nth-last-of-type(2){
+    width: 95%;
+}
+p.address_heading{
+    color: rgb(1, 1, 202);
+    font-size: 0.9rem;
+}
+div#clg_address{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin-bottom: 2rem; */
+}
+div.back_side ol{
+    margin-top: 1rem;
+}
+div#clg_address p{
+    width: 90%;
+    font-size: 0.9rem;
+    margin-top: 0;
+    margin-bottom: 2px;
 }

@@ -1,6 +1,14 @@
 const express = require('express')
 const path = require('path')
 const multer = require('multer')
+const sql = require('mysql2')
+
+const connection = sql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    database: 'student_id_card',  // database that is used
+    password: "mainak@mysql"   // password of mysql
+})
 
 const app = express()
 const PORT = 8080;
@@ -28,10 +36,27 @@ app.get("/", (req, res) => {
     res.render("index.ejs")
 })
 
-app.post("/image_download", upload.single("input_img"), (req, res) => {
+app.post("/image", upload.single("input_img"), (req, res) => {
     const data = req.body;
     let name = data['name'].toUpperCase();
     let roll = data['roll'].toUpperCase();
     let img_url = path.join("Images", curr_filename)
     res.render("get_image.ejs", { name, roll, data, img_url })
+
+    // Insert data in SQL
+    let q = 'INSERT INTO student_details VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    let { uid, dept, dob, address, state, pincode, contact1, contact2, valid_upto, blood_grp, issue_date } = data;
+
+    if (!contact2) {
+        contact2 = null;   // 2nd contact number is optional
+    }
+    let new_data = [uid, name, roll, dept, dob, address, state, pincode, contact1, contact2, valid_upto, blood_grp, issue_date];
+    connection.query(q, new_data, (err, result) => {
+        try {
+            if (err) throw err;
+        } catch (err) {
+            console.log(err);
+        }
+    })
+    res.send(new_data)
 })

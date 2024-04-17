@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.back_side{
+            outline: 1px solid black;
+            width: 300px;
+            height: 510px;
+            /* padding: 1rem; */
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+        div.back_side h2{
+            text-transform: uppercase;
+            color: rgb(208, 2, 2);
+            text-align: center;
+            position: relative;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            top: 1.5rem;
+        }
+        div.back_side p, div.back_side li{
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin: 0.5rem;
+        }
+        div.back_side li{
+            text-align: left;
+            position: relative;
+            right: 0.5rem
+        }
+        div#student_address p:nth-last-of-type(2){
+            width: 95%;
+        }
+        p.address_heading{
+            color: rgb(1, 1, 202);
+            font-size: 0.9rem;
+        }
+        div#clg_address{
+            margin-top: 10px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* margin-bottom: 2rem; */
+        }
+        div.back_side ol{
+            margin-bottom: 10px;
+        }
+        div#clg_address p{
+            width: 90%;
+            font-size: 0.9rem;
+            margin-top: 0;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="back_side">
+        <h2>Instructions</h2>
+        <ol>
+            <li>Keep this card compulsory with you whenever you are in the campus. This card is not transferrable, maintain it properly</li>
+            <li>Present this card compulsory for using the Library. For any non-compliance of Library rules, your membership may be withdrawn</li>
+            <li>Loss of this card must be reported immediately to the nearest Police station & the Institution Office. A duplicate card will code Rs. 100.</li>
+        </ol>
+        <div id="student_address">
+            <p class="address_heading">
+                Student's address
+            </p>
+            <p><%= data.address %>, <%= data.state %>, <%= data.pincode %></p>
+            <p>Contact: <%= data.contact1 %>, <%= data.contact2 %></p>
+        </div>
+        <div id="clg_address">
+            <p>243 G.T.Road (N) Liluah, </p>
+            <p>Howrah - 711204</p>
+            <p>&phone; 26549315/17</p>
+            <p>Web: www.mckvie.edu.in</p>
+        </div>
+    </div>
+</body>
+</html>

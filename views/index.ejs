@@ -6,22 +6,22 @@
     <title>Upload details</title>
 </head>
 <body>
-    <form action="/image_download" method="POST" enctype="multipart/form-data">
+    <form action="/image" method="POST" enctype="multipart/form-data">
         <div class="uid">
             <label for="uid">UID</label>
-            <input type="text" name="uid" id="uid">
+            <input type="text" name="uid" id="uid" required>
         </div>
         <div class="name">
             <label for="name">Name</label>
-            <input type="text" name="name" id="name">
+            <input type="text" name="name" id="name" required>
         </div>
         <div class="roll_no">
             <label for="roll">Roll No.</label>
-            <input type="text" name="roll" id="roll">
+            <input type="text" name="roll" id="roll" required>
         </div>
         <div class="department">
             <label for="dept">Department</label>
-            <select name="dept" id="dept">
+            <select name="dept" id="dept" required>
                 <option value="CSE-DS">CSE-DS</option>
                 <option value="CSE">CSE</option>
                 <option value="CSE-AIML">CSE-AIML</option>
@@ -29,23 +29,43 @@
         </div>
         <div class="dob">
             <label for="dob">DOB</label>
-            <input type="date" name="dob" id="dob">
+            <input type="date" name="dob" id="dob" required>
+        </div>
+        <div class="address">
+            <label for="address">Address</label>
+            <input type="text" name="address" id="address" required>
+        </div>
+        <div class="state">
+            <label for="state">State</label>
+            <input type="text" name="state" id="state" required>
+        </div>
+        <div class="pincode">
+            <label for="pincode">Pincode</label>
+            <input type="number" name="pincode" id="pincode"required>
+        </div>
+        <div class="contact1">
+            <label for="contact1">Contact number 1</label>
+            <input type="number" name="contact1" id="contact1" required>
+        </div>
+        <div class="contact2">
+            <label for="contact2">Contact number 2</label>
+            <input type="number" name="contact2" id="contact2">
         </div>
         <div class="valid">
             <label for="valid_upto">Valid Upto</label>
-            <input type="date" name="valid_upto" id="valid_upto">
+            <input type="date" name="valid_upto" id="valid_upto" required>
         </div>
         <div class="blood_grp">
             <label for="blood_grp">Blood Group</label>
-            <input type="text" name="blood_grp" id="blood_grp">
+            <input type="text" name="blood_grp" id="blood_grp" required>
         </div>
         <div class="issue">
             <label for="issue_date">Issue Date</label>
-            <input type="date" name="issue_date" id="issue_date">
+            <input type="date" name="issue_date" id="issue_date" required>
         </div>
         <div id="stud_img">
             <label for="input_img">Upload image</label>
-            <input type="file" name="input_img" id="input_img">
+            <input type="file" name="input_img" id="input_img" required>
         </div>
         <div>
             <button type="submit">Submit</button>
