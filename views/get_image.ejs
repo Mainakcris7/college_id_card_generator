@@ -4,13 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>College ID</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.6/JsBarcode.all.min.js" integrity="sha512-k2wo/BkbloaRU7gc/RkCekHr4IOVe10kYxJ/Q8dRPl7u3YshAQmg3WfZtIcseEk+nGBdK03fHBeLgXTxRmWCLQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <div class="container">
-        <div id="outer">
+        <div class="btns">
+            <button class="btn active" id="preview">Preview</button>
+            <button class="btn" id="download">Download</button>
+        </div>
+        <div id="card_preview">
             <div id="dom">
             <div id="logo_collegename">
                 <div id="logo">
@@ -51,7 +56,11 @@
             </div>
             <p id="principal">Principal</p>
         </div>
-        <button id="generate">Generate</button>
+        <div id="generate_btn">
+            <button id="generate">Generate <i class="fa-solid fa-angle-right"></i></button>
+        </div>
+        </div>
+        <div id="id_download">
         </div>
     </div>
     <script src="/js/app.js"></script>
