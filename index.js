@@ -42,7 +42,6 @@ app.post("/image", upload.single("input_img"), (req, res) => {
     let roll = data['roll'].toUpperCase();
     let img_url = path.join("Images", curr_filename)
     res.render("get_image.ejs", { name, roll, data, img_url })
-
     // Insert data in SQL
     let q = 'INSERT INTO student_details VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
     let { uid, dept, dob, address, state, pincode, contact1, contact2, valid_upto, blood_grp, issue_date } = data;
@@ -58,5 +57,4 @@ app.post("/image", upload.single("input_img"), (req, res) => {
             console.log(err);
         }
     })
-    res.send(new_data)
 })

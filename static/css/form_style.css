@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nanum+Gothic&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@400;600&display=swap');
+
+body{
+    margin: 0;
+    padding: 20px;
+    font-family: "Poppins", sans-serif;
+    background-color: #060E23;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    background-color: #14274E;
+    border-radius: 1rem;
+    width: 800px;
+}
+
+.container .header{
+    width: 100%;
+    background-color: #ED9926;
+    color: #060E23;
+    text-align: center;
+    padding-top: 0.05rem;
+    padding-bottom: 0.05rem;
+    border-radius: 1rem 1rem 0 0;
+    font-size: 20px;
+}
+.container .header h2{
+    margin: 5px;
+    text-transform: uppercase;
+}
+.container form .main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+form .main .element{
+    margin: 10px 0 10px 0;
+    width: calc(100% /2 - 20px);
+}
+
+.main .element input, select{
+    background-color: #E8F0FE;
+    color: #060E23;
+    font-weight: 500;
+    height: 42px;
+    width: 100%;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    padding-left: 15px;
+    padding-right: 10px;
+    font-size: 16px;
+    box-sizing:border-box;
+}
+.main .element input::placeholder{
+    color: #3a3a3a;
+}
+label{
+    font-size: 0.9rem;
+    padding-left: 5px;
+}
+.main .element input:focus, input:valid{
+    border-bottom: 3px solid #ED9926;
+    border-radius: 10px 10px 0 0;
+}
+
+.main .element select:focus{
+    border-bottom: 3px solid #ED9926;
+    border-radius: 10px 10px 0 0;
+}
+
+.element input{
+    border-bottom: 3px solid #e9b368;
+}
+
+.stud_img{
+    margin: 10px 0 12px 0;
+    width: calc(100% /2 - 20px);
+}
+
+.stud_img input{
+    background-color: #E8F0FE;
+    color: #060E23;
+    height: 42px;
+    width: 100%;
+    border-radius: 10px;
+    transition: all 0.2s linear;
+    font-size: 16px;
+}
+
+.stud_img input:focus{
+    border: none;
+    border-bottom: 3px solid #ED9926;
+    border-radius: 10px 10px 0 0;
+}
+
+input[type=file]::file-selector-button {
+    margin: 5px;
+    border: none;
+    background-color: transparent;
+    background: #084cdf;
+    font-size: 0.9rem;
+    padding: 8.5px 20px;
+    border-radius: 10px;
+    color: #E8F0FE;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+}
+  
+input[type=file]::file-selector-button:hover {
+    background: #0d45a0;
+}
+
+.submit-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#submit-button{
+    margin: 1rem;
+    background-color: #ED9926;
+    color: #060E23;
+    padding: 9px 19px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1rem;
+    border: 1px solid #ED9926;
+    transition: all 0.13s linear;
+    cursor: pointer;
+}
+#submit-button:hover{
+    background-color: #cf8926;
+}
+
+@media (max-width:830px){
+    .container{
+        width: 100%;
+    }
+
+    form .main .element{
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .main .element input, select{
+        width: 100%;
+    }
+    .stud_img{
+        width: 100%;
+    }
+}
