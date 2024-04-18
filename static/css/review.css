@@ -10,17 +10,25 @@ body{
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
     background-color: #060E23;
     font-family: sans-serif;
 }
 h1#review{
     text-align: center;
+    padding: 0.5rem 0 0.5rem 0;
     color: #ED9926;
     font-family: 'Poppins', sans-serif;
+}
+div.outer{
+    margin-top: 0.5rem;
+    width: 85vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-evenly;
+
 }
 div#container, div#container_2{
     width: 300px;
@@ -34,49 +42,7 @@ div#container, div#container_2{
     background-color: #14274E;
     position: relative;
 }
-div#container div.btns, div#container_2 div.btns{
-    display: flex;
-    width: 100%;
-}
 
-div.btns button.btn{
-    cursor: pointer;
-    padding: 0.5rem 0;
-    display: inline-block;
-    text-transform: uppercase;
-    width: 50%;
-    background-color: #14274E;
-    border: none;
-    color: #ED9926;
-    font-family: "Poppins", sans-serif;
-    transition: all 0.15s linear;
-}
-button.btn:hover{
-    font-weight: 500;
-}
-div.btns button.active{
-    background-color: #ED9926;
-    border-bottom: 2px solid black;
-    color: black;
-    font-weight: bold;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-div#container div#id_download, div#container_2 div#id_download_2{
-    position: absolute;
-    width: 300px;
-    top: 54px;
-    transform: translateX(110%);
-    transition: all 0.15s linear;
-    opacity: 0;
-    /* left: 100%; */
-}
-div#id_download a, div#id_download_2 a{
-    text-decoration: none;
-}
-div#card_preview, div#card_preview_2{
-    transition: all 0.15s linear;
-}
 div#dom{
     width: 300px;
     height: 1/2.7;
@@ -187,19 +153,7 @@ button#generate, button#generate_2, div#id_download a, div#id_download_2 a{
     transition: all 0.05s linear;
     font-family: "Poppins", sans-serif;
 }
-button#generate:hover, button#generate_2:hover, div#id_download a:hover, div#id_download_2 a:hover{
-    border-radius: 20px;
-}
-div#generate_btn, div#generate_btn_2{
-    display: flex;
-    flex-direction: row-reverse;
-    margin-top: 10px;
-}
-div#id_download a, div#id_download_2 a{
-    display: block;
-    width: max-content;
-    margin: 4px auto 0 auto;
-}
+
 
 /* Back side */
 
@@ -260,4 +214,31 @@ div#clg_address p{
     font-size: 0.9rem;
     margin-top: 0;
     margin-bottom: 2px;
+}
+div#next{
+    width: 100vw;
+    box-sizing: border-box;
+    padding-right: 3rem;
+    display: flex;
+    flex-direction: row-reverse;
+    align-self: flex-end;
+}
+div#next a{
+    border: none;
+    border-radius: 5px;
+    background-color: #ED9926;
+    color: black;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.05s linear;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    margin-top: 0.5rem;
+    transition: all 0.15s linear;
+}
+div#next a:hover{
+    background-color: #cf8926;
 }

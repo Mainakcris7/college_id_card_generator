@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College ID</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/review.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.6/JsBarcode.all.min.js" integrity="sha512-k2wo/BkbloaRU7gc/RkCekHr4IOVe10kYxJ/Q8dRPl7u3YshAQmg3WfZtIcseEk+nGBdK03fHBeLgXTxRmWCLQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <h1 id="review">Review the details carefully</h1>
+    <div class="outer">
+        <div id="container">
+            <div id="card_preview">
+                <div id="dom">
+                <div id="logo_collegename">
+                    <div id="logo">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm29oN9qGi14THfIIoukK6SgcOx8el_448Wd5juzuRwg&s" alt="student">
+                    </div>
+                    <div id="collegename">
+                        <h2>MCKV Institute of Engineering</h2>
+                        <p id="college_details">A Co-Ed PG Degree Engineering College</p>
+                    </div>
+                </div>
+                <div id="image">
+                    <img src="<%= img_url %>" alt="">
+                </div>
+                <p id="uid"><%= data.uid%></p>
+                <svg id="barcode"></svg>
+                <p id="name"><%= name%></p>
+                <div id="details">
+                    <p id="roll">ROLL NO.: <%= roll%></p>
+                    <div id="other_details">
+                        <div id="key">
+                            <p>Department.</p>
+                            <p>DOB.</p>
+                            <p>Valid Upto</p>
+                            <p>Blood Group.</p>
+                            <p>Issue Date.</p>
+                        </div>
+                        <div id="values">
+                            <p>:&nbsp; &nbsp; <%= data.dept%></p>
+                            <p>:&nbsp; &nbsp; <%= data.dob %></p>
+                            <p>:&nbsp; &nbsp; <%= data.valid_upto %></p>
+                            <p>:&nbsp; &nbsp; <span style="color:red"><%= data.blood_grp %></span></p>
+                            <p>:&nbsp; &nbsp; <%= data.issue_date %></p>
+                        </div>
+                    </div>
+                </div>
+                <div id="principal-sign">
+                    <img src="principal_sign.jpeg" alt="">
+                </div>
+                <p id="principal">Principal</p>
+            </div>
+            </div>
+        </div>
+        <div id="container_2">
+            <div id="card_preview_2">
+                <div class="back_side" id="back_side">
+                    <h2>Instructions</h2>
+                    <ol>
+                        <li>Keep this card compulsory with you whenever you are in the campus. This card is not transferrable, maintain it properly</li>
+                        <li>Present this card compulsory for using the Library. For any non-compliance of Library rules, your membership may be withdrawn</li>
+                        <li>Loss of this card must be reported immediately to the nearest Police station & the Institution Office. A duplicate card will code Rs. 100.</li>
+                    </ol>
+                    <div id="student_address">
+                        <p class="address_heading">
+                            Student's address
+                        </p>
+                        <p><%= data.address %>, <%= data.state %>, <%= data.pincode %></p>
+                        <p>Contact: <%= data.contact1 %>, <%= data.contact2 %></p>
+                    </div>
+                    <div id="clg_address">
+                        <p>243 G.T.Road (N) Liluah, </p>
+                        <p>Howrah - 711204</p>
+                        <p>&phone; 26549315/17</p>
+                        <p>Web: www.mckvie.edu.in</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="next">
+        <a href="/image">Next <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <script>
+        let uid = document.querySelector("p#uid")
+        let student_name = document.querySelector("p#name")
+        window.addEventListener("load", () => {
+        let val = uid.value + " " + student_name.value;
+        JsBarcode("#barcode", val, {
+            displayValue: false
+        })
+    })
+    </script>
+</body>
+</html>

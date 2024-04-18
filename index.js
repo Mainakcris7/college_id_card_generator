@@ -36,12 +36,25 @@ app.get("/", (req, res) => {
     res.render("index.ejs")
 })
 
-app.post("/image", upload.single("input_img"), (req, res) => {
-    const data = req.body;
-    let name = data['name'].toUpperCase();
-    let roll = data['roll'].toUpperCase();
-    let img_url = path.join("Images", curr_filename)
-    res.render("get_image.ejs", { name, roll, data, img_url })
+// This same data will be used in the /image route, that's why saving it, each time new data comes, these values will be updated
+var data;
+var img_url, name, roll;
+
+app.post("/preview", upload.single("input_img"), (req, res) => {
+    data = req.body;
+    name = data['name'].toUpperCase();
+    roll = data['roll'].toUpperCase();
+    img_url = path.join("Images", curr_filename)
+    res.render("preview.ejs", { name, roll, data, img_url })
+    // res.send(data)
+})
+app.get("/image", (req, res) => {
+    // const data = req.body;
+    // let name = data['name'].toUpperCase();
+    // let roll = data['roll'].toUpperCase();
+    // let img_url = path.join("Images", curr_filename)
+
+    // res.send(data)
     // Insert data in SQL
     let q = 'INSERT INTO student_details VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
     let { uid, dept, dob, address, state, pincode, contact1, contact2, valid_upto, blood_grp, issue_date } = data;
@@ -53,8 +66,9 @@ app.post("/image", upload.single("input_img"), (req, res) => {
     connection.query(q, new_data, (err, result) => {
         try {
             if (err) throw err;
+            res.render("get_image.ejs", { name, roll, data, img_url })
         } catch (err) {
-            console.log(err);
+            res.render("error.ejs", { err });
         }
     })
 })
