@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Mukta:wght@200;300;400;500;600;700;800&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
         *{
             margin: 0;
             padding: 0;
@@ -18,6 +20,9 @@
             align-items: center;
             background-color: #060E23;
         }
+        h2{
+            font-weight: 500;
+        }
         div.container{
             background-color: #ED9926;
             border-radius: 10px;
@@ -26,8 +31,32 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            
             font-family: "Poppins", sans-serif;
+        }
+        a{
+            display: block;
+            width: max-content;
+            text-decoration: none;
+            background-color: #011045;
+            color: #ED9926;
+            margin-top: 1.1rem;
+            padding: 9px 12px;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 1rem;
+            transition: all 0.13s linear;
+            cursor: pointer;
+            transition: all 0.1s linear;
+        }
+        a i{
+            display: inline-block !important;
+            margin-right: 5px;
+        }
+        a:hover{
+            color: #c58021;
         }
     </style>
 </head>
@@ -37,6 +66,7 @@
         <h2>Error code: <%= err.code %></h2>
         <h2>Error no.: <%= err.errno %></h2>
         <h2>Error message: <%= err.sqlMessage %></h2>
+        <a id="back" href="/"><i class="fa-solid fa-angle-left"></i>return home</a>
     </div>
 </body>
 </html>

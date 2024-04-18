@@ -15,7 +15,7 @@
         <form action="/preview" method="POST" enctype="multipart/form-data">
             <div class="main">
                 <div class="uid element">
-                    <label for="uid">UID <span style="color: red;">*</span></label>
+                    <label for="uid">Unique ID <span style="color: red;">*</span></label>
                     <input type="text" name="uid" id="uid" placeholder="Student Id" required>
                 </div>
     
@@ -32,7 +32,7 @@
                 <div class="department element">
                     <label for="dept">Department <span style="color: red;">*</span></label>
                     <select name="dept" id="dept">
-                        <option value="" style="opacity: 0.5;">--Select--</option>
+                        <option value="" style="opacity: 0.5;">--Select-- </option>
                         <option value="CSE-DS">CSE-DS</option>
                         <option value="CSE">CSE</option>
                         <option value="CSE-AIML">CSE-AIML</option>
@@ -44,7 +44,7 @@
                 </div>
     
                 <div class="dob element">
-                    <label for="dob">DOB <span style="color: red;">*</span></label>
+                    <label for="dob">Date of Birth <span style="color: red;">*</span></label>
                     <input type="date" name="dob" id="dob" required>
                 </div>
     
@@ -97,5 +97,6 @@
             </div>
         </form>
     </div>
+    <script src="/js/form_control.js"></script>
 </body>
 </html>
