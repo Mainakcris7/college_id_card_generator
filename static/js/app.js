@@ -42,11 +42,11 @@ generate_btn.addEventListener("click", async () => {
         img_div.innerHTML = ""   // To clear the image container div every time new image is generated
         var img = new Image();
         img.src = dataUrl;
-        //download
+        // download
         let link = document.createElement('a');
         link.innerHTML = `Download <i class="fa-solid fa-file-arrow-down"></i>`
         link.href = dataUrl;
-        link.download = 'download.png'  // download file name
+        link.download = uid.innerText + "-front.png"  // download file name
         img_div.append(img, link);
         container.append(img_div);
         first_generate()
@@ -71,7 +71,7 @@ generate_btn_2.addEventListener("click", async () => {
         let link = document.createElement('a');
         link.innerHTML = `Download <i class="fa-solid fa-file-arrow-down"></i>`
         link.href = dataUrl;
-        link.download = 'download.png'  // download file name
+        link.download = uid.innerText + "-back.png"  // download file name
         img_div_2.append(img, link);
         container_2.append(img_div_2);
         first_generate_2()
@@ -82,9 +82,9 @@ generate_btn_2.addEventListener("click", async () => {
 
 // When the page is loaded generate the barcode
 window.addEventListener("load", () => {
-    let val = uid.value + " " + student_name.value;
+    let val = uid.innerText + " " + student_name.innerText;
     JsBarcode("#barcode", val, {
-        displayValue: false
+        displayValue: false,
     })
 })
 
@@ -139,3 +139,5 @@ download_btn_2.addEventListener("click", () => {
     preview_div_2.style.opacity = 0;
     img_div_2.style.opacity = 1;
 })
+
+let download = document.querySelector("div#id_download ")

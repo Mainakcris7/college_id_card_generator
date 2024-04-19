@@ -3,100 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/form_style.css">
-    <title>Upload details</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Mukta:wght@200;300;400;500;600;700;800&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #060E23;
+        }
+        h1{
+            text-align: center;
+        }
+        div.container{
+            width: max-content;
+            background-color: #ED9926;
+            border-radius: 10px;
+            box-sizing: border-box;
+            padding: 2.5rem;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: "Poppins", sans-serif;
+        }
+        div.options{
+            margin-top: 2rem;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }
+        a{
+            display: block;
+            width: max-content;
+            text-decoration: none;
+            background-color: #011045;
+            color: #ED9926;
+            margin-top: 1.1rem;
+            padding: 9px 12px;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 1rem;
+            transition: all 0.13s linear;
+            cursor: pointer;
+            transition: all 0.1s linear;
+        }
+        a i{
+            margin-left: 5px;
+        }
+        a:hover{
+            color: #c58021;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h2>Student Infromation</h2>
+        <h1>Generate Identity Card</h1>
+        <div class="options">
+            <a id="back" href="/form/faculty">for faculty <i class="fa-solid fa-building-columns"></i></a>
+            <a id="back" href="/form/student">for students <i class="fa-solid fa-graduation-cap"></i></a>
         </div>
-        <form action="/preview" method="POST" enctype="multipart/form-data">
-            <div class="main">
-                <div class="uid element">
-                    <label for="uid">Unique ID <span style="color: red;">*</span></label>
-                    <input type="text" name="uid" id="uid" placeholder="Student Id" required>
-                </div>
-    
-                <div class="name element">
-                    <label for="name">Name <span style="color: red;">*</span></label>
-                    <input type="text" name="name" id="name" placeholder="Student Name" required>
-                </div>
-    
-                <div class="roll_no element">
-                    <label for="roll">College Roll No. <span style="color: red;">*</span></label>
-                    <input type="text" name="roll" id="roll" placeholder="e.g, BTECH/CSE-DS/2021/048" required>
-                </div>
-    
-                <div class="department element">
-                    <label for="dept">Department <span style="color: red;">*</span></label>
-                    <select name="dept" id="dept">
-                        <option value="" style="opacity: 0.5;">--Select-- </option>
-                        <option value="CSE-DS">CSE-DS</option>
-                        <option value="CSE">CSE</option>
-                        <option value="CSE-AIML">CSE-AIML</option>
-                        <option value="IT">IT</option>
-                        <option value="ECE">ECE</option>
-                        <option value="EE">EE</option>
-                        <option value="AUE">AUE</option>
-                    </select>
-                </div>
-    
-                <div class="dob element">
-                    <label for="dob">Date of Birth <span style="color: red;">*</span></label>
-                    <input type="date" name="dob" id="dob" required>
-                </div>
-    
-                <div class="address element">
-                    <label for="address">Address <span style="color: red;">*</span></label>
-                    <input type="text" name="address" id="address" placeholder="Address" required>
-                </div>
-    
-                <div class="state element">
-                    <label for="state">State <span style="color: red;">*</span></label>
-                    <input type="text" name="state" id="state" placeholder="State" required>
-                </div>
-    
-                <div class="pincode element">
-                    <label for="pincode">Pincode <span style="color: red;">*</span></label>
-                    <input type="number" name="pincode" id="pincode" placeholder="Pincode" required>
-                </div>
-    
-                <div class="contact1 element">
-                    <label for="contact1">Contact number 1 <span style="color: red;">*</span></label>
-                    <input type="number" name="contact1" id="contact1" placeholder="Phone Number" required>
-                </div>
-    
-                <div class="contact2 element">
-                    <label for="contact2">Contact number 2</label>
-                    <input type="number" name="contact2" id="contact2" placeholder="Phone Number">
-                </div>
-    
-                <div class="valid element">
-                    <label for="valid_upto">Valid Upto <span style="color: red;">*</span></label>
-                    <input type="date" name="valid_upto" id="valid_upto" required>
-                </div>
-    
-                <div class="blood_grp element">
-                    <label for="blood_grp">Blood Group <span style="color: red;">*</span></label>
-                    <input type="text" name="blood_grp" id="blood_grp" placeholder="Blood Group" required>
-                </div>
-    
-                <div class="issue element">
-                    <label for="issue_date">Issue Date <span style="color: red;">*</span></label>
-                    <input type="date" name="issue_date" id="issue_date" required>
-                </div>
-                <div class="stud_img">
-                    <label for="input_img">Upload image <span style="color: red;">*</span></label>
-                    <input type="file" name="input_img" id="input_img" required>
-                </div>
-            </div>
-            <div class="submit-button">
-                <button type="submit" id="submit-button">Submit <i class="fa-solid fa-angle-right"></i></button>
-            </div>
-        </form>
     </div>
-    <script src="/js/form_control.js"></script>
 </body>
 </html>

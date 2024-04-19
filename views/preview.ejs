@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/review.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.6/JsBarcode.all.min.js" integrity="sha512-k2wo/BkbloaRU7gc/RkCekHr4IOVe10kYxJ/Q8dRPl7u3YshAQmg3WfZtIcseEk+nGBdK03fHBeLgXTxRmWCLQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.6/JsBarcode.all.min.js"></script>
 </head>
 <body>
     <h1 id="review">Review the details carefully</h1>
@@ -31,21 +31,37 @@
                 <svg id="barcode"></svg>
                 <p id="name"><%= name%></p>
                 <div id="details">
-                    <p id="roll">ROLL NO.: <%= roll%></p>
+                    <% if (who == 'student') { %>
+                        <p id="roll">ROLL NO.: <%= roll%></p>
+                    <% } %>
                     <div id="other_details">
                         <div id="key">
-                            <p>Department.</p>
-                            <p>DOB.</p>
-                            <p>Valid Upto</p>
-                            <p>Blood Group.</p>
-                            <p>Issue Date.</p>
+                            <% if (who == 'student') { %>                             
+                                <p>Department.</p>
+                                <p>DOB.</p>
+                                <p>Valid Upto</p>
+                                <p>Blood Group.</p>
+                                <p>Issue Date.</p>
+                            <% }else { %>
+                                <p>Emp ID:</p>
+                                <p>Department:</p>
+                                <p>Designation:</p>
+                                <p>Blood Group:</p>
+                            <% } %>    
                         </div>
                         <div id="values">
-                            <p>:&nbsp; &nbsp; <%= data.dept%></p>
-                            <p>:&nbsp; &nbsp; <%= data.dob %></p>
-                            <p>:&nbsp; &nbsp; <%= data.valid_upto %></p>
-                            <p>:&nbsp; &nbsp; <span style="color:red"><%= data.blood_grp %></span></p>
-                            <p>:&nbsp; &nbsp; <%= data.issue_date %></p>
+                            <% if (who == 'student') { %>
+                                <p>:&nbsp; &nbsp; <%= data.dept%></p>
+                                <p>:&nbsp; &nbsp; <%= data.dob %></p>
+                                <p>:&nbsp; &nbsp; <%= data.valid_upto %></p>
+                                <p>:&nbsp; &nbsp; <span style="color:red"><%= data.blood_grp %></span></p>
+                                <p>:&nbsp; &nbsp; <%= data.issue_date %></p>
+                            <% } else {%>
+                                <p>:&nbsp; &nbsp; <%= data.uid%></p>
+                                <p>:&nbsp; &nbsp; <%= data.dept%></p>
+                                <p>:&nbsp; &nbsp; <%= data.designation %></p>
+                                <p>:&nbsp; &nbsp; <span style="color:red"><%= data.blood_grp %></span></p>
+                            <% } %>   
                         </div>
                     </div>
                 </div>
@@ -61,13 +77,24 @@
                 <div class="back_side" id="back_side">
                     <h2>Instructions</h2>
                     <ol>
-                        <li>Keep this card compulsory with you whenever you are in the campus. This card is not transferrable, maintain it properly</li>
-                        <li>Present this card compulsory for using the Library. For any non-compliance of Library rules, your membership may be withdrawn</li>
-                        <li>Loss of this card must be reported immediately to the nearest Police station & the Institution Office. A duplicate card will code Rs. 100.</li>
+                        <% if (who == 'student') { %>
+                            <li>Keep this card compulsory with you whenever you are in the campus. This card is not transferrable, maintain it properly.</li>
+                            <li>Present this card compulsory for using the Library. For any non-compliance of Library rules, your membership may be withdrawn.</li>
+                            <li>Loss of this card must be reported immediately to the nearest Police station & the Institution Office. A duplicate card will code Rs. 100.</li>
+                            <% } else {%>
+                                <li>This Identity Card cum Attendance Card must be carried/displayed while on duty and produced on demand.</li>
+                                <li>Lost of this card must be immediately reported to police and to the college administration in writing for obtaining a new card.</li>
+                                <li>Replacement of card will be on actual cost basis and on production of the police diary.</li>
+                                <li>This card should be returned to the college on cessation of the Employment.</li>
+                        <% } %>
                     </ol>
                     <div id="student_address">
                         <p class="address_heading">
-                            Student's address
+                            <% if (who == 'student') { %>                             
+                                Student's address
+                            <% } else {%>
+                                Residential address
+                            <% } %>
                         </p>
                         <p><%= data.address %>, <%= data.state %>, <%= data.pincode %></p>
                         <p>Contact: <%= data.contact1 %>, <%= data.contact2 %></p>
@@ -89,7 +116,7 @@
         let uid = document.querySelector("p#uid")
         let student_name = document.querySelector("p#name")
         window.addEventListener("load", () => {
-        let val = uid.value + " " + student_name.value;
+        let val = uid.innerText + " " + student_name.innerText;
         JsBarcode("#barcode", val, {
             displayValue: false
         })

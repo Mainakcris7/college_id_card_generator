@@ -17,45 +17,61 @@
         </div>
         <div id="card_preview">
             <div id="dom">
-            <div id="logo_collegename">
-                <div id="logo">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm29oN9qGi14THfIIoukK6SgcOx8el_448Wd5juzuRwg&s" alt="student">
-                </div>
-                <div id="collegename">
-                    <h2>MCKV Institute of Engineering</h2>
-                    <p id="college_details">A Co-Ed PG Degree Engineering College</p>
-                </div>
-            </div>
-            <div id="image">
-                <img src="<%= img_url %>" alt="">
-            </div>
-            <p id="uid"><%= data.uid%></p>
-            <svg id="barcode"></svg>
-            <p id="name"><%= name%></p>
-            <div id="details">
-                <p id="roll">ROLL NO.: <%= roll%></p>
-                <div id="other_details">
-                    <div id="key">
-                        <p>Department.</p>
-                        <p>DOB.</p>
-                        <p>Valid Upto</p>
-                        <p>Blood Group.</p>
-                        <p>Issue Date.</p>
+                <div id="logo_collegename">
+                    <div id="logo">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm29oN9qGi14THfIIoukK6SgcOx8el_448Wd5juzuRwg&s" alt="student">
                     </div>
-                    <div id="values">
-                        <p>:&nbsp; &nbsp; <%= data.dept%></p>
-                        <p>:&nbsp; &nbsp; <%= data.dob %></p>
-                        <p>:&nbsp; &nbsp; <%= data.valid_upto %></p>
-                        <p>:&nbsp; &nbsp; <span style="color:red"><%= data.blood_grp %></span></p>
-                        <p>:&nbsp; &nbsp; <%= data.issue_date %></p>
+                    <div id="collegename">
+                        <h2>MCKV Institute of Engineering</h2>
+                        <p id="college_details">A Co-Ed PG Degree Engineering College</p>
                     </div>
                 </div>
+                <div id="image">
+                    <img src="<%= img_url %>" alt="">
+                </div>
+                <p id="uid"><%= data.uid%></p>
+                <svg id="barcode"></svg>
+                <p id="name"><%= name%></p>
+                <div id="details">
+                    <% if (who == 'student') { %>
+                        <p id="roll">ROLL NO.: <%= roll%></p>
+                    <% } %>
+                    <div id="other_details">
+                        <div id="key">
+                            <% if (who == 'student') { %>                             
+                                <p>Department.</p>
+                                <p>DOB.</p>
+                                <p>Valid Upto</p>
+                                <p>Blood Group.</p>
+                                <p>Issue Date.</p>
+                            <% }else { %>
+                                <p>Emp ID:</p>
+                                <p>Department:</p>
+                                <p>Designation:</p>
+                                <p>Blood Group:</p>
+                            <% } %>    
+                        </div>
+                        <div id="values">
+                            <% if (who == 'student') { %>
+                                <p>:&nbsp; &nbsp; <%= data.dept%></p>
+                                <p>:&nbsp; &nbsp; <%= data.dob %></p>
+                                <p>:&nbsp; &nbsp; <%= data.valid_upto %></p>
+                                <p>:&nbsp; &nbsp; <span style="color:red"><%= data.blood_grp %></span></p>
+                                <p>:&nbsp; &nbsp; <%= data.issue_date %></p>
+                            <% } else {%>
+                                <p>:&nbsp; &nbsp; <%= data.uid%></p>
+                                <p>:&nbsp; &nbsp; <%= data.dept%></p>
+                                <p>:&nbsp; &nbsp; <%= data.designation %></p>
+                                <p>:&nbsp; &nbsp; <span style="color:red"><%= data.blood_grp %></span></p>
+                            <% } %>   
+                        </div>
+                    </div>
+                </div>
+                <div id="principal-sign">
+                    <img src="principal_sign.jpeg" alt="">
+                </div>
+                <p id="principal">Principal</p>
             </div>
-            <div id="principal-sign">
-                <img src="principal_sign.jpeg" alt="">
-            </div>
-            <p id="principal">Principal</p>
-        </div>
         <div id="generate_btn">
             <button id="generate">Generate <i class="fa-solid fa-angle-right"></i></button>
         </div>
@@ -72,13 +88,24 @@
             <div class="back_side" id="back_side">
                 <h2>Instructions</h2>
                 <ol>
-                    <li>Keep this card compulsory with you whenever you are in the campus. This card is not transferrable, maintain it properly</li>
-                    <li>Present this card compulsory for using the Library. For any non-compliance of Library rules, your membership may be withdrawn</li>
-                    <li>Loss of this card must be reported immediately to the nearest Police station & the Institution Office. A duplicate card will code Rs. 100.</li>
+                    <% if (who == 'student') { %>
+                        <li>Keep this card compulsory with you whenever you are in the campus. This card is not transferrable, maintain it properly.</li>
+                        <li>Present this card compulsory for using the Library. For any non-compliance of Library rules, your membership may be withdrawn.</li>
+                        <li>Loss of this card must be reported immediately to the nearest Police station & the Institution Office. A duplicate card will code Rs. 100.</li>
+                        <% } else {%>
+                            <li>This Identity Card cum Attendance Card must be carried/displayed while on duty and produced on demand.</li>
+                            <li>Lost of this card must be immediately reported to police and to the college administration in writing for obtaining a new card.</li>
+                            <li>Replacement of card will be on actual cost basis and on production of the police diary.</li>
+                            <li>This card should be returned to the college on cessation of the Employment.</li>
+                    <% } %>
                 </ol>
                 <div id="student_address">
                     <p class="address_heading">
-                        Student's address
+                        <% if (who == 'student') { %>                             
+                            Student's address
+                        <% } else {%>
+                            Residential address
+                        <% } %>
                     </p>
                     <p><%= data.address %>, <%= data.state %>, <%= data.pincode %></p>
                     <p>Contact: <%= data.contact1 %>, <%= data.contact2 %></p>
@@ -89,7 +116,6 @@
                     <p>&phone; 26549315/17</p>
                     <p>Web: www.mckvie.edu.in</p>
                 </div>
-            
             </div>
             <div id="generate_btn_2">
                 <button id="generate_2">Generate <i class="fa-solid fa-angle-right"></i></button>

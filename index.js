@@ -3,7 +3,16 @@ const path = require('path')
 const multer = require('multer')
 const sql = require('mysql2')
 
+// for student
 const connection = sql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    database: 'student_id_card',  // database that is used
+    password: "mainak@mysql"   // password of mysql
+})
+
+// for teacher
+const connection2 = sql.createConnection({
     host: 'localhost',
     user: 'root',
     database: 'student_id_card',  // database that is used
@@ -36,6 +45,12 @@ app.get("/", (req, res) => {
     res.render("index.ejs")
 })
 
+var who;
+app.get("/form/:who", (req, res) => {
+    who = req.params['who']
+    res.render("form.ejs", { who })
+})
+
 // This same data will be used in the /image route, that's why saving it, each time new data comes, these values will be updated
 var data;
 var img_url, name, roll;
@@ -43,32 +58,50 @@ var img_url, name, roll;
 app.post("/preview", upload.single("input_img"), (req, res) => {
     data = req.body;
     name = data['name'].toUpperCase();
-    roll = data['roll'].toUpperCase();
+    if ("roll" in data)
+        roll = data['roll'].toUpperCase();
     img_url = path.join("Images", curr_filename)
-    res.render("preview.ejs", { name, roll, data, img_url })
+
+    res.render("preview.ejs", { name, roll, data, img_url, who })
+    // res.send("hey")
     // res.send(data)
 })
 app.get("/image", (req, res) => {
-    // const data = req.body;
-    // let name = data['name'].toUpperCase();
-    // let roll = data['roll'].toUpperCase();
-    // let img_url = path.join("Images", curr_filename)
 
-    // res.send(data)
     // Insert data in SQL
-    let q = 'INSERT INTO student_details VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-    let { uid, dept, dob, address, state, pincode, contact1, contact2, valid_upto, blood_grp, issue_date } = data;
+    if (who == 'student') {
+        let q = 'INSERT INTO student_details VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        let { uid, dept, dob, address, state, pincode, contact1, contact2, valid_upto, blood_grp, issue_date } = data;
 
-    if (!contact2) {
-        contact2 = null;   // 2nd contact number is optional
-    }
-    let new_data = [uid, name, roll, dept, dob, address, state, pincode, contact1, contact2, valid_upto, blood_grp, issue_date];
-    connection.query(q, new_data, (err, result) => {
-        try {
-            if (err) throw err;
-            res.render("get_image.ejs", { name, roll, data, img_url })
-        } catch (err) {
-            res.render("error.ejs", { err });
+        if (!contact2) {
+            contact2 = null;   // 2nd contact number is optional
         }
-    })
+        let new_data = [uid, name, roll, dept, dob, address, state, pincode, contact1, contact2, valid_upto, blood_grp, issue_date];
+        connection.query(q, new_data, (err, result) => {
+            try {
+                if (err) throw err;
+                res.render("get_image.ejs", { name, roll, data, img_url, who })
+            } catch (err) {
+                res.render("error.ejs", { err })
+            }
+        })
+    } else {   // For faculty
+        let q2 = 'INSERT INTO teacher_details VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        let { uid, dept, designation, address, state, pincode, contact1, contact2, blood_grp } = data;
+
+        if (!contact2) {
+            contact2 = null;   // 2nd contact number is optional
+        }
+
+        let new_data = [uid, name, designation, dept, address, state, pincode, contact1, contact2, blood_grp];
+        connection2.query(q2, new_data, (err, result) => {
+            try {
+                if (err) throw err;
+                res.render("get_image.ejs", { name, roll, data, img_url, who })
+            } catch (err) {
+                res.render("error.ejs", { err })
+            }
+        })
+
+    }
 })
