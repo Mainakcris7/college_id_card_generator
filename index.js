@@ -94,18 +94,18 @@ app.get("/image", (req, res) => {
             try {
                 if (err) throw err;
                 res.render("get_image.ejs", { name, roll, data, pic_url, who })
+                // write to csv
+                let csv_data = `\n${uid}, ${name}, ${roll}, ${dept}, ${dob}, ${address}, ${state}, ${pincode}, ${contact1}, ${contact2}, ${valid_upto}, ${blood_grp}, ${issue_date}`
+                fs.appendFile("student.csv", csv_data, (err) => {
+                    try {
+                        if (err) throw err;
+                    }
+                    catch (err) {
+                        console.log(err)
+                    }
+                })
             } catch (err) {
                 res.render("error.ejs", { err })
-            }
-        })
-        // write to csv
-        let csv_data = `\n${uid}, ${name}, ${roll}, ${dept}, ${dob}, ${address}, ${state}, ${pincode}, ${contact1}, ${contact2}, ${valid_upto}, ${blood_grp}, ${issue_date}`
-        fs.appendFile("student.csv", csv_data, (err) => {
-            try {
-                if (err) throw err;
-            }
-            catch (err) {
-                console.log(err)
             }
         })
     } else {   // For faculty
@@ -121,21 +121,19 @@ app.get("/image", (req, res) => {
             try {
                 if (err) throw err;
                 res.render("get_image.ejs", { name, roll, data, pic_url, sign_url, who })
+                // Write to teacher.csv file
+                let csv_data = `\n${uid}, ${name}, ${designation}, ${dept}, ${address}, ${state}, ${pincode}, ${contact1}, ${contact2}, ${blood_grp}`
+                fs.appendFile("teacher.csv", csv_data, (err) => {
+                    try {
+                        if (err) throw err;
+                    }
+                    catch (err) {
+                        console.log(err)
+                    }
+                })
             } catch (err) {
                 res.render("error.ejs", { err })
             }
         })
-
-        // Write to teacher.csv file
-        let csv_data = `\n${uid}, ${name}, ${designation}, ${dept}, ${address}, ${state}, ${pincode}, ${contact1}, ${contact2}, ${blood_grp}`
-        fs.appendFile("teacher.csv", csv_data, (err) => {
-            try {
-                if (err) throw err;
-            }
-            catch (err) {
-                console.log(err)
-            }
-        })
-
     }
 })
