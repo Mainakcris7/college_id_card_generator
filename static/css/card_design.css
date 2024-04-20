@@ -10,18 +10,18 @@ body{
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
     background-color: #060E23;
     font-family: sans-serif;
 }
-h1#review{
-    text-align: center;
-    color: #ED9926;
-    font-family: 'Poppins', sans-serif;
+div.outer{
+    margin-top: 0.5rem;
+    width: 85vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-evenly;
 }
 div#container, div#container_2{
     width: 300px;
@@ -36,49 +36,7 @@ div#container, div#container_2{
     position: relative;
     outline: 1px solid rgb(97, 96, 96);
 }
-div#container div.btns, div#container_2 div.btns{
-    display: flex;
-    width: 100%;
-}
 
-div.btns button.btn{
-    cursor: pointer;
-    padding: 0.5rem 0;
-    display: inline-block;
-    text-transform: uppercase;
-    width: 50%;
-    background-color: #14274E;
-    border: none;
-    color: #ED9926;
-    font-family: "Poppins", sans-serif;
-    transition: all 0.15s linear;
-}
-button.btn:hover{
-    font-weight: 500;
-}
-div.btns button.active{
-    background-color: #ED9926;
-    border-bottom: 2px solid black;
-    color: black;
-    font-weight: bold;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-div#container div#id_download, div#container_2 div#id_download_2{
-    position: absolute;
-    width: 300px;
-    top: 54px;
-    transform: translateX(110%);
-    transition: all 0.15s linear;
-    opacity: 0;
-    /* left: 100%; */
-}
-div#id_download a, div#id_download_2 a{
-    text-decoration: none;
-}
-div#card_preview, div#card_preview_2{
-    transition: all 0.15s linear;
-}
 div#dom{
     width: 300px;
     aspect-ratio: 1/1.58;
@@ -91,6 +49,9 @@ div#logo_collegename{
     display: flex;
     border-bottom: 3px solid var(--primary-blue);
 }
+div#collegename.faculty{
+    margin-left: 10px;
+}
 div#logo_collegename h2, p{
     text-align: center;
 }
@@ -100,7 +61,12 @@ div#logo_collegename h2{
     margin-top: 9px;
     font-size: 1.3rem;
 }
-
+div#logo_collegename.faculty h2 {
+    color: var(--primary-blue);
+    line-height: 1;
+    margin-top: 5px;
+    font-size: 14px;
+}
 div#logo_collegename p{
     margin-top: 5px;
     font-size: 0.65rem;
@@ -109,6 +75,9 @@ div#logo_collegename p{
 }
 div#logo{
     width: 95px;
+}
+div#logo.faculty {
+    width: 54px;
 }
 div#logo img{
     width: 100%;
@@ -181,32 +150,6 @@ p#principal{
     margin-right: 50px;
     margin-bottom: 3rem;
 }
-button#generate, button#generate_2, div#id_download a, div#id_download_2 a{
-    border: none;
-    border-radius: 5px;
-    background-color: #ED9926;
-    color: black;
-    font-weight: 500;
-    font-size: 0.8rem;
-    padding: 0.5rem 0.8rem;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: all 0.05s linear;
-    font-family: "Poppins", sans-serif;
-}
-button#generate:hover, button#generate_2:hover, div#id_download a:hover, div#id_download_2 a:hover{
-    border-radius: 20px;
-}
-div#generate_btn, div#generate_btn_2{
-    display: flex;
-    flex-direction: row-reverse;
-    margin-top: 10px;
-}
-div#id_download a, div#id_download_2 a{
-    display: block;
-    width: max-content;
-    margin: 4px auto 0 auto;
-}
 
 /* Back side */
 
@@ -247,9 +190,9 @@ div#student_address{
 div#student_address p:nth-last-of-type(2){
     width: 95%;
 }
-p.address_heading{
+p.address_heading, p#card_sign{
     color: rgb(1, 1, 202);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 div#clg_address{
     margin-top: 5px;
@@ -267,4 +210,9 @@ div#clg_address p{
     font-size: 0.9rem;
     margin-top: 0;
     margin-bottom: 2px;
+}
+img#sign{
+    width: 90px;
+    margin: auto;
+    margin-top: 0;
 }

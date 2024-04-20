@@ -106,11 +106,16 @@
                     <label for="blood_grp">Blood Group <span style="color: red;">*</span></label>
                     <input type="text" name="blood_grp" id="blood_grp" placeholder="Blood Group" required>
                 </div>
-    
                 <div class="stud_img">
                     <label for="input_img">Upload image <span style="color: red;">*</span></label>
-                    <input type="file" name="input_img" id="input_img" required>
+                    <input type="file" name="pic" id="pic" required>
                 </div>
+                <% if (who == 'faculty') { %>
+                    <div class="stud_img">
+                        <label for="input_img">Upload signature</label>
+                        <input type="file" name="sign" id="sign">
+                    </div>
+                <% } %>
             </div>
             <div class="submit-button">
                 <button type="submit" id="submit-button">Submit <i class="fa-solid fa-angle-right"></i></button>

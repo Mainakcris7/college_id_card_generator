@@ -18,8 +18,9 @@ CREATE TABLE student_details(
     Issue_date DATE
 );
 
+drop table teacher_details;
 CREATE TABLE teacher_details(
-	UID VARCHAR(10) PRIMARY KEY,
+	Eid VARCHAR(10) PRIMARY KEY,
     Name VARCHAR(30) NOT NULL,
     Designation VARCHAR(20) NOT NULL,
     Dept VARCHAR(10) NOT NULL,

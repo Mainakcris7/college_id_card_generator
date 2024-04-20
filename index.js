@@ -28,18 +28,20 @@ app.use(express.static(path.join(__dirname, "static")))
 app.set('views', path.join(__dirname, "views"))
 app.set("view engine", "ejs")
 
-var curr_filename = null;   // Will be used to create current image url
+var pic_url = null;   // Will be used to create current picture url
+var sign_url = null;   // Will be used to create current sign url
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, "static/Images")
     },
     filename: (req, file, cb) => {
-        // console.log(file)
-        cb(null, req.body['uid'] + "-" + req.body['name'] + "-" + file.originalname)
-        curr_filename = req.body['uid'] + "-" + req.body['name'] + "-" + file.originalname;
+        cb(null, file.fieldname + "-" + req.body['uid'] + "-" + req.body['name'] + ".png")
     }
 })
+
+// Handle multiple uploads
 const upload = multer({ storage: storage })
+const multi_upload = upload.fields([{ name: 'pic', maxCount: 1 }, { name: 'sign', maxCount: 1 }])
 
 app.get("/", (req, res) => {
     res.render("index.ejs")
@@ -55,16 +57,19 @@ app.get("/form/:who", (req, res) => {
 var data;
 var img_url, name, roll;
 
-app.post("/preview", upload.single("input_img"), (req, res) => {
+app.post("/preview", multi_upload, (req, res) => {
     data = req.body;
     name = data['name'].toUpperCase();
     if ("roll" in data)
         roll = data['roll'].toUpperCase();
-    img_url = path.join("Images", curr_filename)
-
-    res.render("preview.ejs", { name, roll, data, img_url, who })
-    // res.send("hey")
     // res.send(data)
+    pic_url = path.join("Images", "pic" + "-" + req.body['uid'] + "-" + req.body['name'] + ".png")
+    if (who == 'faculty')
+        sign_url = path.join("Images", "sign" + "-" + req.body['uid'] + "-" + req.body['name'] + ".png")
+
+    res.render("preview.ejs", { name, roll, data, pic_url, sign_url, who })
+    // res.send("hey")
+    // res.send({ ...data, pic_url, sign_url })
 })
 app.get("/image", (req, res) => {
 
@@ -80,7 +85,7 @@ app.get("/image", (req, res) => {
         connection.query(q, new_data, (err, result) => {
             try {
                 if (err) throw err;
-                res.render("get_image.ejs", { name, roll, data, img_url, who })
+                res.render("get_image.ejs", { name, roll, data, pic_url, who })
             } catch (err) {
                 res.render("error.ejs", { err })
             }
@@ -97,7 +102,7 @@ app.get("/image", (req, res) => {
         connection2.query(q2, new_data, (err, result) => {
             try {
                 if (err) throw err;
-                res.render("get_image.ejs", { name, roll, data, img_url, who })
+                res.render("get_image.ejs", { name, roll, data, pic_url, sign_url, who })
             } catch (err) {
                 res.render("error.ejs", { err })
             }

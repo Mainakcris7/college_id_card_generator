@@ -6,6 +6,7 @@
     <title>Preview</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/review.css">
+    <link rel="stylesheet" href="css/card_design.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.6/JsBarcode.all.min.js"></script>
 </head>
@@ -15,17 +16,30 @@
         <div id="container">
             <div id="card_preview">
                 <div id="dom">
-                <div id="logo_collegename">
-                    <div id="logo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm29oN9qGi14THfIIoukK6SgcOx8el_448Wd5juzuRwg&s" alt="student">
-                    </div>
-                    <div id="collegename">
-                        <h2>MCKV Institute of Engineering</h2>
-                        <p id="college_details">A Co-Ed PG Degree Engineering College</p>
-                    </div>
-                </div>
+                    <% if (who == 'student') { %>                     
+                        <div id="logo_collegename">
+                            <div id="logo">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm29oN9qGi14THfIIoukK6SgcOx8el_448Wd5juzuRwg&s" alt="student">
+                            </div>
+                            <div id="collegename">
+                                <h2>MCKV Institute of Engineering</h2>
+                                <p id="college_details">A Co-Ed PG Degree Engineering College</p>
+                            </div>
+                        </div>
+                    <% } else {%>
+                        <div id="logo_collegename" class="faculty">
+                            <div id="logo" class="faculty">
+                                <img src="mckv_logo.png" alt="student">
+                            </div>
+                            <div id="collegename" class="faculty">
+                                <h2>MCKV Institute of Engineering</h2>
+                                <p>243 G.T.Road(N), Liluah, Howrah - 712204</p>
+                                <p>&phone; 26548315/17 &#127760; www.mckvie.edu.in</p>
+                            </div>
+                        </div>
+                    <% } %>
                 <div id="image">
-                    <img src="<%= img_url %>" alt="">
+                    <img src="<%= pic_url %>" alt="">
                 </div>
                 <p id="uid"><%= data.uid%></p>
                 <svg id="barcode"></svg>
@@ -99,12 +113,17 @@
                         <p><%= data.address %>, <%= data.state %>, <%= data.pincode %></p>
                         <p>Contact: <%= data.contact1 %>, <%= data.contact2 %></p>
                     </div>
-                    <div id="clg_address">
-                        <p>243 G.T.Road (N) Liluah, </p>
-                        <p>Howrah - 711204</p>
-                        <p>&phone; 26549315/17</p>
-                        <p>Web: www.mckvie.edu.in</p>
-                    </div>
+                    <% if (who == 'faculty') { %>
+                        <p id="card_sign">Signature of the cardholder</p>
+                        <img src="<%= sign_url %>" alt="" id="sign">
+                    <% } else{%>
+                        <div id="clg_address">
+                            <p>243 G.T.Road (N) Liluah, </p>
+                            <p>Howrah - 711204</p>
+                            <p>&phone; 26549315/17</p>
+                            <p>Web: www.mckvie.edu.in</p>
+                        </div>
+                    <% } %>
                 </div>
             </div>
         </div>
