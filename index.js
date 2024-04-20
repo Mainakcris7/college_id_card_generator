@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const multer = require('multer')
 const sql = require('mysql2')
+const fs = require('fs')
 
 // for student
 const connection = sql.createConnection({
@@ -97,6 +98,16 @@ app.get("/image", (req, res) => {
                 res.render("error.ejs", { err })
             }
         })
+        // write to csv
+        let csv_data = `\n${uid}, ${name}, ${roll}, ${dept}, ${dob}, ${address}, ${state}, ${pincode}, ${contact1}, ${contact2}, ${valid_upto}, ${blood_grp}, ${issue_date}`
+        fs.appendFile("student.csv", csv_data, (err) => {
+            try {
+                if (err) throw err;
+            }
+            catch (err) {
+                console.log(err)
+            }
+        })
     } else {   // For faculty
         let q2 = 'INSERT INTO teacher_details VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         let { uid, dept, designation, address, state, pincode, contact1, contact2, blood_grp } = data;
@@ -112,6 +123,17 @@ app.get("/image", (req, res) => {
                 res.render("get_image.ejs", { name, roll, data, pic_url, sign_url, who })
             } catch (err) {
                 res.render("error.ejs", { err })
+            }
+        })
+
+        // Write to teacher.csv file
+        let csv_data = `\n${uid}, ${name}, ${designation}, ${dept}, ${address}, ${state}, ${pincode}, ${contact1}, ${contact2}, ${blood_grp}`
+        fs.appendFile("teacher.csv", csv_data, (err) => {
+            try {
+                if (err) throw err;
+            }
+            catch (err) {
+                console.log(err)
             }
         })
 

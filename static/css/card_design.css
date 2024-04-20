@@ -127,7 +127,11 @@ div#other_details div{
     width: 40%;
 }
 div#other_details div#key{
+    width: 100px;
     margin-left: 2rem;
+}
+div#other_details div#values{
+    width: 150px;
 }
 div#other_details div p{
     text-align: left;
