@@ -38,7 +38,11 @@
                 <% if (who == 'faculty') { %>
                     <div class="designation element">
                             <label for="designation">Designation <span style="color: red;">*</span></label>
-                            <input type="text" name="designation" id="designation" placeholder="Designation" required>
+                            <select name="designation" id="designation">
+                                <option value="" style="opacity: 0.5;">--Select-- </option>
+                                <option value="Assistant Professor">Assistant Professor</option>
+                                <option value="Professor">Professor</option>
+                            </select>
                         </div>
                 <% } %>
                 <% if (who == 'student') { %>

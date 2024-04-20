@@ -55,17 +55,24 @@ app.get("/form/:who", (req, res) => {
 
 // This same data will be used in the /image route, that's why saving it, each time new data comes, these values will be updated
 var data;
-var img_url, name, roll;
+var name, roll;
 
 app.post("/preview", multi_upload, (req, res) => {
     data = req.body;
+
     name = data['name'].toUpperCase();
     if ("roll" in data)
         roll = data['roll'].toUpperCase();
-    // res.send(data)
+    // res.send(req.files)
     pic_url = path.join("Images", "pic" + "-" + req.body['uid'] + "-" + req.body['name'] + ".png")
-    if (who == 'faculty')
-        sign_url = path.join("Images", "sign" + "-" + req.body['uid'] + "-" + req.body['name'] + ".png")
+    if (who == 'faculty') {
+        if ("sign" in req.files) {
+            sign_url = path.join("Images", "sign" + "-" + req.body['uid'] + "-" + req.body['name'] + ".png")
+        } else {
+            sign_url = null
+        }
+    }
+
 
     res.render("preview.ejs", { name, roll, data, pic_url, sign_url, who })
     // res.send("hey")
