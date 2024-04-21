@@ -217,6 +217,7 @@ div#clg_address p{
 }
 img#sign{
     width: 90px;
+    height: 42px;
     margin: auto;
     margin-top: 0;
 }

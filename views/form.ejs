@@ -56,13 +56,16 @@
                     <label for="dept">Department <span style="color: red;">*</span></label>
                     <select name="dept" id="dept" required>
                         <option value="" style="opacity: 0.5;">--Select-- </option>
-                        <option value="CSE-DS">CSE-DS</option>
+                        <% if (who === 'student') { %>
+                            <option value="CSE-DS">CSE-DS</option>
+                            <option value="CSE-AIML">CSE-AIML</option>                            
+                        <% } %>
                         <option value="CSE">CSE</option>
-                        <option value="CSE-AIML">CSE-AIML</option>
                         <option value="IT">IT</option>
                         <option value="ECE">ECE</option>
                         <option value="EE">EE</option>
                         <option value="AUE">AUE</option>
+                        <option value="ME">ME</option>
                     </select>
                 </div>
                 <% if (who == 'student') { %>
